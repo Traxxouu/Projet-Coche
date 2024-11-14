@@ -1,0 +1,306 @@
+/*---------- Variables CSS ----------*/
+:root {
+  --primary-color: #6200ea;
+  --secondary-color: #004ec4;
+  --accent-color: #ff0266;
+  --background-color: #f5f5f5;
+  --text-color: #212121;
+  --font-family: 'Roboto', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, #31008b 0%, #520079 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/*---------- Conteneur principal ----------*/
+.container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  overflow-y: auto;
+  max-height: 90vh;
+  position: relative;
+}
+
+/*---------- Bouton "Retour" ----------*/
+.back-btn {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-btn i {
+  margin-right: 5px;
+}
+
+.back-btn:hover {
+  background-color: #e6005c;
+  transform: scale(1.05);
+}
+
+/*---------- Titre et sous-titre ----------*/
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/*---------- Champs de saisie ----------*/
+.todo-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.todo-input input[type="text"],
+.todo-input input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+#add-task-btn {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#add-task-btn i {
+  margin-right: 5px;
+}
+
+#add-task-btn:hover {
+  background-color: #00c4b4;
+  transform: scale(1.05);
+}
+
+/*---------- Barre de progression ----------*/
+.progress-container {
+  background-color: #e9ecef;
+  border-radius: 50px;
+  height: 10px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 50px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/*---------- Liste des tâches ----------*/
+#task-list {
+  list-style: none;
+  padding: 0;
+}
+
+#task-list li {
+  margin-bottom: 15px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+#task-list li.deleting {
+  opacity: 0;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+}
+
+.task-checkbox {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.task-text {
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.task-date {
+  font-size: 14px;
+  color: gray;
+  margin-left: 10px;
+}
+
+.task-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.task-buttons button {
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.task-buttons button i {
+  margin-right: 5px;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  border: none;
+  height: 20px;
+  width: 45%;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+  border: none;
+  height: 20px;
+  width: 45%;
+}
+
+.delete-btn {
+  background-color: #e24e5d;
+  height: 20px;
+  width: 45%;
+  color: #000000;
+  border: none;
+}
+
+.delete-btn:hover {
+  background-color: #f5727f;
+  transform: scale(1.05);
+  border: none;
+  height: 20px;
+  width: 45%;
+}
+
+/*---------- Filtres ----------*/
+.filters {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.filter-btn i {
+  margin-right: 5px;
+}
+
+#toutes {
+  background-color: var(--primary-color);
+}
+
+#encours {
+  background-color: #c97800;
+}
+
+#terminee {
+  background-color: #4caf50;
+}
+
+.filter-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/*---------- Responsivité ----------*/
+@media (max-width: 600px) {
+  .task {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-buttons {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .filters {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .container {
+    padding-bottom: 80px;
+  }
+}

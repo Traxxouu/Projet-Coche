@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Sky Parallax</title>
+    <style>
+        :root {
+            --starFieldWidth: 2560px;
+            --starFieldHeight: 2560px;
+            --starOneScrollDuration: 100s;
+            --starTwoScrollDuration: 125s;
+            --starThreeScrollDuration: 175s;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #020107 0%, #201b46 100%);
+        }
+
+        .stars, .stars1, .stars2 {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        .stars {
+            animation-duration: var(--starOneScrollDuration);
+        }
+        .stars1 {
+            animation-duration: var(--starTwoScrollDuration);
+            width: 2px;
+            height: 2px;
+        }
+        .stars2 {
+            animation-duration: var(--starThreeScrollDuration);
+            width: 3px;
+            height: 3px;
+        }
+
+        .shooting-stars {
+            position: absolute;
+            width: 0;
+            height: 0;
+            background: transparent;
+            box-shadow: none;
+            animation: animShootingStar 2s linear infinite;
+        }
+
+        @keyframes animShootingStar {
+            from {
+                box-shadow: inherit;
+                opacity: 1;
+            }
+            to {
+                transform: translate(300px, -300px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="stars"></div>
+<div class="stars1"></div>
+<div class="stars2"></div>
+<div class="shooting-stars"></div>
+
+<script>
+    function generateStars(selector, count, maxWidth, maxHeight) {
+        let stars = '';
+        for (let i = 0; i < count; i++) {
+            const x = Math.floor(Math.random() * maxWidth);
+            const y = Math.floor(Math.random() * maxHeight);
+            stars += `${x}px ${y}px #FFF, `;
+        }
+        stars = stars.slice(0, -2); // Retire la dernière virgule
+        document.querySelector(selector).style.boxShadow = stars;
+    }
+
+    // Générer les étoiles selon les valeurs souhaitées
+    generateStars('.stars', 1700, 2560, 2560);
+    generateStars('.stars1', 700, 2560, 2560);
+    generateStars('.stars2', 200, 2560, 2560);
+
+    function generateShootingStars(count, maxWidth, maxHeight) {
+        let shootingStars = '';
+        for (let i = 0; i < count; i++) {
+            const x = Math.floor(Math.random() * maxWidth);
+            const y = Math.floor(Math.random() * maxHeight);
+            shootingStars += `${x}px ${y}px rgba(255, 255, 255, 0.75), `;
+        }
+        shootingStars = shootingStars.slice(0, -2); // Retire la dernière virgule
+        document.querySelector('.shooting-stars').style.boxShadow = shootingStars;
+    }
+
+    // Générer les étoiles filantes
+    generateShootingStars(10, 2560, 2560);
+
+    // Effet de parallaxe en fonction du mouvement de la souris
+    document.addEventListener("mousemove", (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+        document.querySelector(".stars").style.transform = `translate(${x * 40}px, ${y * 40}px)`;
+        document.querySelector(".stars1").style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+        document.querySelector(".stars2").style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+    });
+</script>
+
+
+
+</body>
+</html>
