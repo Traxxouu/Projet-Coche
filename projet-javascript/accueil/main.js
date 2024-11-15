@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    renderLists(data.lists);
+                    renderLists(data.lists); //chat function -> page word 2
                 } else {
                     listsContainer.innerHTML = `<p>${data.error}</p>`;
                 }
