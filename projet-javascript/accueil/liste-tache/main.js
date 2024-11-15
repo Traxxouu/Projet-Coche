@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 if (data.success) {
                     listTitleElement.textContent = data.list.name;
-                    renderTasks(data.tasks);
+                    renderTasks(data.tasks); //-->meme que list
                     updateProgressBar(data.tasks);
                 } else {
                     taskListElement.innerHTML = `<p>${data.error}</p>`;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Fonction pour afficher les tâches en fonction du filtre actuel
-    function renderTasks(tasks) {
+    function renderTasks(tasks) { //-->meme que list
         taskListElement.innerHTML = "";
         tasks
             .filter(task => {
