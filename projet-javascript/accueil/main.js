@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     //-------------[Fonction pour afficher les listes avec la barre de progression]----------------------
-    function renderLists(lists) {
+    function renderLists(lists) { //--> page word 2 : ChatG
         listsContainer.innerHTML = "";
         lists.forEach(list => {
             const listCard = document.createElement("div");
