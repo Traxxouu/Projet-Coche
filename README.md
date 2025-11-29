@@ -1,3 +1,5 @@
+Site plus accessible !!! il faut le lancer en local 
+
 # Projet Coche
 
 **<a href="https://coche.rf.gd/?i=1">Projet Coche</a>** est un site de gestion de tâches permettant aux utilisateurs de créer, suivre et gérer leurs listes de tâches de manière intuitive et interactive. Ce projet est conçu pour être utilisé en local avec WampServer pour faciliter le développement et le test.
